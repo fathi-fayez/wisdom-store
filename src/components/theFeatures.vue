@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="bar flex-center" cols="12">
-        <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
+        <h4 class="text-uppercase">buy now, pay later starting at 0% apr</h4>
         <v-btn class="ms-5">learn more</v-btn>
       </v-col>
       <v-col class="flex-center" cols="4"><svg aria-hidden="true" focusable="false" data-prefix="fas"
