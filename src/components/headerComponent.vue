@@ -7,7 +7,6 @@
           <p>Sale up to 70% off on selected items*</p>
           <v-btn>Shop Now</v-btn>
         </v-col>
-
       </v-row>
     </v-container>
   </header>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <v-row>
       <v-col class="bar flex-center" cols="12">
         <h4 class="text-uppercase">buy now, pay later starting at 0% apr</h4>
@@ -28,7 +28,7 @@
         </svg><span>Longest Warranties Offer</span></v-col>
 
     </v-row>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -37,8 +37,11 @@
 
 <style scoped>
 .bar {
-  height: 70px;
   background-color: rgb(253, 173, 0);
+}
+
+.v-row {
+  padding-bottom: 20px;
 }
 
 button {

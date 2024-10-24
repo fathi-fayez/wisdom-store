@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar height="fit-content" color="#02218f">
+  <v-app-bar height="fit-content" color="#02218f" absolute>
     <v-container fluid>
       <v-row>
         <v-col cols="3"><img src="@/assets/images/logo.png" alt="" /></v-col>

@@ -3,6 +3,7 @@
     <v-layout>
       <CartDrawer />
       <AppNav />
+      <FixedNav />
       <v-main class="mt">
         <slot></slot>
       </v-main>
@@ -12,8 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import CartDrawer from './cartDrawer.vue'
+import CartDrawer from './CartDrawer.vue'
 import AppNav from './AppNav.vue'
+import FixedNav from './FixedNav.vue'
 // import AppFooter from './AppFooter.vue'
 import { ref, provide } from 'vue'
 

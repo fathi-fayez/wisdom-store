@@ -3,6 +3,9 @@
   margin: 0;
   font-weight: normal;
 }
+:root {
+  --gray-color: #eee;
+}
 a {
   text-decoration: none;
 }
