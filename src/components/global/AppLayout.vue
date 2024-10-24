@@ -2,11 +2,11 @@
   <div class="layout">
     <v-layout>
       <CartDrawer />
-      <v-main>
+      <AppNav />
+      <v-main class="mt">
         <slot></slot>
       </v-main>
-      <AppNav />
-      <AppFooter />
+      <!-- <AppFooter /> -->
     </v-layout>
   </div>
 </template>
@@ -14,10 +14,10 @@
 <script setup lang="ts">
 import CartDrawer from './cartDrawer.vue'
 import AppNav from './AppNav.vue'
-import AppFooter from './AppFooter.vue'
+// import AppFooter from './AppFooter.vue'
 import { ref, provide } from 'vue'
 
-const isDrawerOpen = ref(true)
+const isDrawerOpen = ref(false)
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
@@ -25,4 +25,8 @@ const toggleDrawer = () => {
 provide('isDrawerOpen', isDrawerOpen)
 provide('toggleDrawer', toggleDrawer)
 </script>
-<style></style>
+<style>
+.mt {
+  margin-top: 156px !important;
+}
+</style>
