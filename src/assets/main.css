@@ -1,3 +1,4 @@
+@import 'swiper/swiper-bundle.min.css';
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,9 +7,7 @@
 :root {
   --gray-color: #eee;
 }
-a {
-  text-decoration: none;
-}
+
 .flex-center {
   display: flex;
   align-items: center;

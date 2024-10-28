@@ -12,6 +12,9 @@ import * as directives from 'vuetify/directives'
 import { createVuetify } from 'vuetify'
 import '@mdi/font/css/materialdesignicons.css'
 
+// Swiper Config
+import 'swiper/css'
+
 const vuetify = createVuetify({ components, directives })
 
 const app = createApp(App)
