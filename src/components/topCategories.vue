@@ -1,5 +1,5 @@
 <template>
-  <section class="my-16">
+  <section class="my-16 pb-16">
     <div class="banner">
       <h1 class="pt-10">Cyber Monday <span>Best Offers</span></h1>
       <v-container>
@@ -156,8 +156,13 @@ const categories = ref<item[]>([
   color: rgb(239, 205, 9);
 }
 
-span {
-  color: aqua;
-  font-weight: 900;
+img {
+  transition: 0.5s;
+  border-radius: 50%;
+  border: 4px dotted transparent;
+}
+img:hover {
+  transform: scale(0.9);
+  border-color: rgb(2 33 143);
 }
 </style>

@@ -1,20 +1,28 @@
 <template>
   <section>
-    <v-contaier fluid>
+    <v-container fluid>
       <v-row>
-        <v-col cols="4"><img src="../assets/images/playstations.webp" alt=""></v-col>
-        <v-col cols="4"> <img src="../assets/images/headset.webp" alt=""></v-col>
-        <v-col cols="4"> <img src="../assets/images/chairs.webp" alt=""></v-col>
-        <v-col cols="6" class=""> <img src="../assets/images/iphones.webp" alt=""></v-col>
-        <v-col cols="6" class=""> <img src="../assets/images/laptops.webp" alt=""></v-col>
+        <v-col cols="4"
+          ><img src="../assets/images/playstations.webp" alt=""
+        /></v-col>
+        <v-col cols="4">
+          <img src="../assets/images/headset.webp" alt=""
+        /></v-col>
+        <v-col cols="4">
+          <img src="../assets/images/chairs.webp" alt=""
+        /></v-col>
+        <v-col cols="6" class="">
+          <img src="../assets/images/iphones.webp" alt=""
+        /></v-col>
+        <v-col cols="6" class="">
+          <img src="../assets/images/laptops.webp" alt=""
+        /></v-col>
       </v-row>
-    </v-contaier>
+    </v-container>
   </section>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style scoped>
 section {

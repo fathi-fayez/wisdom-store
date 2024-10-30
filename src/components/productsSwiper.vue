@@ -1,9 +1,18 @@
 <template>
   <section class="my-16">
     <div class="title mb-5 px-5 d-flex justify-space-between align-center">
-      <h1 class="font-weight-bold text-red">Flash Deals</h1>
+      <h1 :class="[`font-weight-bold text-${titleColor}`]">{{ title }}</h1>
       <a class="text-black" href="#">Shop All</a>
     </div>
+    <v-cotainer fluid v-if="!products.length">
+      <v-col cols="12" class="mt-16">
+        <v-row>
+          <v-col cols="3" v-for="num in 4" :key="num">
+            <v-skeleton-loader type="card, article, button"></v-skeleton-loader>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-cotainer>
     <swiper
       :modules="[Pagination, Navigation, Autoplay]"
       :slides-per-view="4"
@@ -96,6 +105,12 @@ const props = defineProps({
   products: {
     type: Array,
     required: true,
+  },
+  title: {
+    type: String,
+  },
+  titleColor: {
+    type: String,
   },
 })
 </script>
