@@ -5,14 +5,7 @@
         <v-col cols="2"><img class="logo" src="@/assets/images/logo.png" alt="" /></v-col>
         <v-col cols="7">
           <ul class="links d-flex text-white justify-space-between mt-5" style="list-style: none">
-            <li>Theme Demo</li>
-            <li>Shop</li>
-            <li>Product</li>
-            <li>New In</li>
-            <li>Must Have</li>
-            <li>Collection</li>
-            <li>Pages</li>
-            <li>Buy Ella</li>
+            <li v-for="category in categories" :key="category.title">{{ category.title }}</li>
           </ul>
         </v-col>
         <v-col cols="3" class="d-flex justify-end">
@@ -43,6 +36,10 @@
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
+import { productsModule } from '@/stores/products'
+import { storeToRefs } from 'pinia'
+const store = productsModule()
+const { categories } = storeToRefs(store)
 const toggleDrawer = inject('toggleDrawer')
 
 const closeDrawer = () => {

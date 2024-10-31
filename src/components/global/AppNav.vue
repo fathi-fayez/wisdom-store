@@ -2,7 +2,7 @@
   <v-app-bar height="fit-content" color="#02218f" absolute>
     <v-container fluid>
       <v-row>
-        <v-col cols="3"><img src="@/assets/images/logo.png" alt="" /></v-col>
+        <v-col cols="3"><router-link to="/"><img src="@/assets/images/logo.png" alt="" /></router-link></v-col>
         <v-col cols="5 position-relative">
           <input type="search" id="navSearvh" style="width: 80%; border-radius: 50px; outline: none;"
             class="py-3 px-4 bg-white" placeholder="Search the store">
@@ -68,19 +68,16 @@
             </div>
           </div>
         </v-col>
-        <v-col cols="6">
+        <v-col cols="7">
           <ul class="links d-flex text-white justify-space-between mt-5" style="list-style: none">
-            <li>Theme Demo</li>
-            <li>Shop</li>
-            <li>Product</li>
-            <li>New In</li>
-            <li>Must Have</li>
-            <li>Collection</li>
-            <li>Pages</li>
-            <li>Buy Ella</li>
+            <li v-for="category in categories" :key="category.title">
+              <router-link :to="{ name: 'categoryPage', params: { category: category.route, title: category.title } }"
+                style="color: white; text-decoration: none;">
+                {{ category.title }}
+              </router-link>
+            </li>
           </ul>
         </v-col>
-        <v-col cols="1"></v-col>
         <v-col cols="5" class="d-flex justify-end align-center ga-16">
           <div class="help">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-headset" role="img"
@@ -119,6 +116,10 @@
 
 <script lang="ts" setup>
 import { ref, inject } from 'vue'
+import { productsModule } from '@/stores/products'
+import { storeToRefs } from 'pinia'
+const store = productsModule()
+const { categories } = storeToRefs(store)
 
 interface lang {
   title: string;

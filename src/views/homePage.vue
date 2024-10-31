@@ -3,20 +3,13 @@
     <headerComponent />
     <theFeatures />
     <topOffers />
-    <productComponent
-      :products="flashDeals"
-      title="Flash Deals"
-      titleColor="blue"
-    />
+    <productComponent :products="flashDeals" title="Flash Deals" titleColor="blue" />
     <topCategories />
     <newProducts :products="filteredProducts" />
     <qualityFeatures />
-    <productComponent
-      :products="groceriesProducts"
-      title="Groceries Products"
-      titleColor="black"
-    />
+    <productComponent :products="groceriesProducts" title="Groceries Products" titleColor="black" />
     <whyShopWithUs />
+
   </div>
 </template>
 
@@ -30,6 +23,7 @@ import topCategories from '@/components/topCategories.vue'
 import newProducts from '@/components/newProducts.vue'
 import qualityFeatures from '@/components/qualityFeatures.vue'
 import whyShopWithUs from '@/components/whyShopWithUs.vue'
+
 import { productsModule } from '@/stores/products'
 import { storeToRefs } from 'pinia'
 const store = productsModule()
