@@ -16,6 +16,7 @@ export const productsModule = defineStore('productsModule', {
       { title: 'Mobile Accessories', route: 'mobile-accessories' },
     ],
     categorieProducts: [] as any[],
+    singleProduct: '',
   }),
   actions: {
     async getProducts() {
@@ -36,9 +37,19 @@ export const productsModule = defineStore('productsModule', {
     async getProductsByCategory(category: string) {
       try {
         const res = await axios.get(
-          `https://dummyjson.com/products/category/${category}`,
+          `https://dummyjson.com/products/category/${category}?limit=20`,
         )
         this.categorieProducts = res.data.products
+      } catch (err) {
+        console.error(err)
+      }
+    },
+    async getSingleProduct(productId: any) {
+      try {
+        const res = await axios.get(
+          `https://dummyjson.com/products/${productId}`,
+        )
+        this.singleProduct = res.data
       } catch (err) {
         console.error(err)
       }

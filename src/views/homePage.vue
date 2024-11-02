@@ -3,13 +3,20 @@
     <headerComponent />
     <theFeatures />
     <topOffers />
-    <productComponent :products="flashDeals" title="Flash Deals" titleColor="blue" />
+    <productComponent
+      :products="flashDeals"
+      title="Flash Deals"
+      titleColor="blue"
+    />
     <topCategories />
     <newProducts :products="filteredProducts" />
     <qualityFeatures />
-    <productComponent :products="groceriesProducts" title="Groceries Products" titleColor="black" />
+    <productComponent
+      :products="groceriesProducts"
+      title="Groceries Products"
+      titleColor="black"
+    />
     <whyShopWithUs />
-
   </div>
 </template>
 

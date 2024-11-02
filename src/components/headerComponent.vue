@@ -3,7 +3,10 @@
     <v-container>
       <v-row>
         <v-col cols="6" class="landing-text">
-          <h1><span> Huge Saving </span> on <br> UHD Televisions</h1>
+          <h1>
+            <span> Huge Saving </span> on <br />
+            UHD Televisions
+          </h1>
           <p>Sale up to 70% off on selected items*</p>
           <v-btn>Shop Now</v-btn>
         </v-col>
@@ -12,23 +15,19 @@
   </header>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style scoped>
 header {
-  background-image: url("src/assets/images/banner-bg.jpg");
+  background-image: url('@/assets/images/banner-bg.jpg');
   background-size: cover;
   background-position: -40px top;
   height: 490px;
-
 }
 
 .landing-text {
   padding: 40px 0 0 100px;
   color: white;
-
 }
 
 .landing-text h1 {
@@ -39,7 +38,6 @@ header {
 .landing-text span {
   color: rgb(0, 234, 255);
   font-weight: 900;
-
 }
 
 .landing-text p {

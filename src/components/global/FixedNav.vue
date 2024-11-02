@@ -2,10 +2,16 @@
   <v-app-bar height="fit-content" color="#02218f">
     <v-container fluid>
       <v-row class="align-center">
-        <v-col cols="2"><img class="logo" src="@/assets/images/logo.png" alt="" /></v-col>
+        <v-col cols="2"><router-link to="/"><img class="logo" src="@/assets/images/logo.png"
+              alt="" /></router-link></v-col>
         <v-col cols="7">
           <ul class="links d-flex text-white justify-space-between mt-5" style="list-style: none">
-            <li v-for="category in categories" :key="category.title">{{ category.title }}</li>
+            <li v-for="category in categories" :key="category.title">
+              <router-link :to="{ name: 'categoryPage', params: { category: category.route, title: category.title } }"
+                style="color: white; text-decoration: none;">
+                {{ category.title }}
+              </router-link>
+            </li>
           </ul>
         </v-col>
         <v-col cols="3" class="d-flex justify-end">
