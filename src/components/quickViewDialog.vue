@@ -103,6 +103,7 @@
               >
               <v-card-actions class="mt-7 w-100 px-0">
                 <v-btn
+                  @click="addItem(product)"
                   variant="outlined"
                   style="
                     text-transform: none;
@@ -127,6 +128,13 @@
 
 <script setup>
 import { ref, inject } from 'vue'
+import { cartStore } from '@/stores/cart'
+const store = cartStore()
+const addToCart = store.addProductToCart
+const addItem = product => {
+  product.quantity = quantity.value
+  addToCart(product)
+}
 const dialog = inject('isDialogOpen')
 const product = inject('selectedProductData')
 const quantity = ref(1)

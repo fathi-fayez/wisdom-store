@@ -92,7 +92,7 @@
                     params: { productId: item.id },
                   })
                 "
-                density="combact"
+                density="compact"
                 class="py-3 px-9 w-75"
                 style="
                   text-transform: none;

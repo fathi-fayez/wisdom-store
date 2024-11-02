@@ -4,7 +4,7 @@
       <h1 :class="[`font-weight-bold text-${titleColor}`]">{{ title }}</h1>
       <a class="text-black" href="#">Shop All</a>
     </div>
-    <v-cotainer fluid v-if="!products.length">
+    <v-container fluid v-if="!products.length">
       <v-col cols="12" class="mt-16">
         <v-row>
           <v-col cols="3" v-for="num in 4" :key="num">
@@ -12,7 +12,7 @@
           </v-col>
         </v-row>
       </v-col>
-    </v-cotainer>
+    </v-container>
     <swiper
       :modules="[Pagination, Navigation, Autoplay]"
       :slides-per-view="4"
@@ -104,7 +104,7 @@
                   params: { productId: item.id },
                 })
               "
-              density="combact"
+              density="compact"
               class="py-3 px-9 w-75"
               style="
                 text-transform: none;
