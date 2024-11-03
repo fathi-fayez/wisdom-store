@@ -131,9 +131,9 @@ import { ref, inject } from 'vue'
 import { cartStore } from '@/stores/cart'
 const store = cartStore()
 const addToCart = store.addProductToCart
-const addItem = product => {
-  product.quantity = quantity.value
-  addToCart(product)
+const addItem = item => {
+  item.quantity = quantity.value
+  addToCart(item)
 }
 const dialog = inject('isDialogOpen')
 const product = inject('selectedProductData')
