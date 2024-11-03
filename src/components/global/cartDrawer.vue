@@ -8,8 +8,11 @@
       temporary
     >
       <v-card class="px-0" elevation="0">
-        <v-card-title class="px-0" style="font-size: 17px; font-weight: bold"
-          >Shopping Cart</v-card-title
+        <v-card-title
+          class="px-0 pr-2 d-flex justify-space-between align-center w-100"
+          style="font-size: 17px; font-weight: bold"
+          >Shopping Cart
+          <v-icon @click="drawer = false">mdi-close</v-icon></v-card-title
         >
 
         <v-card-text class="px-0 py-0" style="color: #6f6f6f"
@@ -19,7 +22,7 @@
           v-if="!cartItems.length"
           class="px-0 py-0"
           style="color: #6f6f6f"
-          >Free shipping for all ordrs over $800.00</v-card-text
+          >Free shipping for all ordrs over $10000.00</v-card-text
         >
         <v-card-text
           v-if="!cartItems.length"
@@ -27,36 +30,25 @@
           style="color: #6f6f6f"
           >Your cart is empty</v-card-text
         >
-        <v-card-actions v-if="!cartItems.length">
-          <v-btn
-            style="
-              text-transform: none;
-              border-radius: 30px;
-              border-color: rgb(199, 199, 199);
-            "
-            class="w-100"
-            variant="outlined"
-            density="compact"
-            height="45"
-            >Continue Shopping</v-btn
-          >
-        </v-card-actions>
-      </v-card>
-      <!-- 00000000000000 -->
-      <v-card class="pa-0" elevation="0" v-if="cartItems.length">
-        <div class="bar-container mt-4 position-relative">
+        <div
+          class="bar-container mt-4 position-relative"
+          v-if="cartItems.length"
+        >
           <svg
             class="icon-shipping-truck"
             viewBox="0 0 40.55 24"
             width="30"
             fill="#F44336"
-            style="
-              position: absolute;
+            :style="`position: absolute;
               bottom: 50%;
               z-index: 1;
-              left: calc(50% - 30px);
-              transition: 0.2s all ease-in-out;
-            "
+              left: calc(${
+                parseInt((calcTotal / 10000) * 100) <= 100
+                  ? parseInt((calcTotal / 10000) * 100)
+                  : 100
+              }% - 30px);
+              transition: 0.15s all ease-in-out;
+          `"
           >
             <g id="Layer_2" data-name="Layer 2">
               <g id="Layer_1-2" data-name="Layer 1">
@@ -81,12 +73,53 @@
               </g>
             </g>
           </svg>
-          <v-progress-linear color="red" height="10" model-value="50" striped>
+          <v-progress-linear
+            color="red"
+            height="10"
+            :model-value="
+              parseInt((calcTotal / 10000) * 100) <= 100
+                ? parseInt((calcTotal / 10000) * 100)
+                : 100
+            "
+            striped
+          >
           </v-progress-linear>
         </div>
-        <v-card-text class="px-0 pt-2" style="color: #6f6f6f"
-          >Only $600.00 away from Free Shipping
+        <v-card-text
+          v-if="cartItems.length && 10000 - calcTotal > 0"
+          class="px-0 pt-2"
+          style="color: #6f6f6f"
+          >Only {{ 10000 - calcTotal }} away from Free Shipping
         </v-card-text>
+        <v-card-text
+          v-if="cartItems.length && 10000 - calcTotal <= 0"
+          class="px-0 pt-2"
+          style="color: #6f6f6f"
+          >Your order now is included Free Shipping
+        </v-card-text>
+        <v-card-actions v-if="!cartItems.length">
+          <v-btn
+            @click="drawer = false"
+            style="
+              text-transform: none;
+              border-radius: 30px;
+              border-color: rgb(199, 199, 199);
+            "
+            class="w-100"
+            variant="outlined"
+            density="compact"
+            height="45"
+            >Continue Shopping</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+      <v-card
+        class="items-card pa-0"
+        elevation="0"
+        v-if="cartItems.length"
+        max-height="250"
+        style="overflow-y: auto"
+      >
         <v-container>
           <v-row v-for="item in cartItems" :key="item.id" class="align-center">
             <v-col cols="5">
@@ -143,7 +176,12 @@
             </v-col>
           </v-row>
         </v-container>
-        <v-card-actions class="flex-column justify-center align-center ga-5">
+      </v-card>
+      <v-card class="pa-0 mt-5" elevation="0">
+        <v-card-actions
+          class="flex-column justify-center align-center ga-5"
+          v-if="cartItems.length"
+        >
           <v-btn
             style="
               text-transform: none;
@@ -177,7 +215,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { inject } from 'vue'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
@@ -188,20 +226,31 @@ const { cartItems } = storeToRefs(store)
 
 const isDrawerOpen = inject('isDrawerOpen')
 const drawer = ref<any>(isDrawerOpen)
+
+const calcTotal = computed(() => {
+  let total = 0
+  cartItems.value.forEach(product => {
+    const discountedPrice =
+      product.price * (1 - product.discountPercentage / 100)
+    total += Math.ceil(discountedPrice * product.quantity)
+  })
+  return total
+})
+
 onMounted(() => {
   getCartItems()
 })
 </script>
 
 <style>
-.v-navigation-drawer__content::-webkit-scrollbar {
+.items-card::-webkit-scrollbar {
   width: 5px;
 }
-.v-navigation-drawer__content::-webkit-scrollbar-thumb {
+.items-card::-webkit-scrollbar-thumb {
   width: 5px;
   background-color: rgb(177, 177, 177);
 }
-.v-navigation-drawer__content::-webkit-scrollbar-track {
+.items-card::-webkit-scrollbar-track {
   width: 5px;
   background-color: rgb(200, 200, 200);
 }
