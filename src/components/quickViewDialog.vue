@@ -104,6 +104,7 @@
               <v-card-actions class="mt-7 w-100 px-0">
                 <v-btn
                   @click="addItem(product)"
+                  :loading="loading"
                   variant="outlined"
                   style="
                     text-transform: none;
@@ -134,10 +135,15 @@ const addToCart = store.addProductToCart
 const addItem = item => {
   item.quantity = quantity.value
   addToCart(item)
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+  }, 1000)
 }
 const dialog = inject('isDialogOpen')
 const product = inject('selectedProductData')
 const quantity = ref(1)
+const loading = ref(false)
 </script>
 
 <style></style>

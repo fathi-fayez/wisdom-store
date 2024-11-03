@@ -3,6 +3,10 @@
     <app-Layout>
       <router-view></router-view>
       <quickViewDialog />
+      <v-snackbar v-model="bar">
+        Item added to
+        <v-btn flat color="primary" @click.native="bar = false">Close</v-btn>
+      </v-snackbar>
     </app-Layout>
   </div>
 </template>
@@ -14,6 +18,7 @@ import quickViewDialog from '@/components/quickViewDialog.vue'
 const selectedProductData = ref({})
 
 const isDialogOpen = ref(false)
+const bar = ref(true)
 const openDialog = item => {
   isDialogOpen.value = true
   // console.log(item)
