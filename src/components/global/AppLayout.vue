@@ -1,12 +1,12 @@
 <template>
   <v-layout class="flex-column">
     <CartDrawer />
-    <AppNav />
-    <FixedNav />
-    <v-main class="mt">
+    <AppNav v-if="route.name != 'check_out'" />
+    <FixedNav v-if="route.name != 'check_out'" />
+    <v-main :class="{ mt: route.name != 'check_out' }">
       <slot></slot>
     </v-main>
-    <AppFooter />
+    <AppFooter v-if="route.name != 'check_out'" />
   </v-layout>
 </template>
 
@@ -16,6 +16,8 @@ import AppFooter from '@/components/global/AppFooter.vue'
 import AppNav from './AppNav.vue'
 import FixedNav from './FixedNav.vue'
 import { ref, provide } from 'vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 const isDrawerOpen = ref(false)
 const toggleDrawer = () => {

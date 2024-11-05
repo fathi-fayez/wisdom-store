@@ -201,7 +201,7 @@
             <v-divider length="100%" color="black"></v-divider>
             <v-divider length="100%" color="black"></v-divider>
             <v-card-actions class="my-5 flex-column">
-              <v-btn style="
+              <v-btn @click="toCheckout" style="
               text-transform: none;
               border-radius: 0;
               margin-bottom: 10px;
@@ -232,6 +232,7 @@ const route = useRouter()
 const store = cartStore()
 const getCartItems = store.getCartItems
 const deleteItem = store.deleteItem
+const setToLocalStorage = store.setToLocalStorage
 const { cartItems } = storeToRefs(store)
 const countries = ref(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
 
@@ -244,6 +245,12 @@ const calcTotal = computed(() => {
   })
   return total
 })
+
+const toCheckout = () => {
+  setToLocalStorage()
+  route.push({ name: 'check_out' })
+
+}
 
 onMounted(() => {
   getCartItems()

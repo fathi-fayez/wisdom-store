@@ -24,6 +24,11 @@ const router = createRouter({
       name: 'cart_Page',
       component: () => import('@/views/cartPage.vue'),
     },
+    {
+      path: '/checkOut',
+      name: 'check_out',
+      component: () => import('@/views/checkOut.vue'),
+    },
   ],
   scrollBehavior() {
     return { top: 0, behavior: 'smooth' }

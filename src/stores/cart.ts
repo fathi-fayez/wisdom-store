@@ -41,5 +41,8 @@ export const cartStore = defineStore('cartStore', {
         this.snackbar = false
       }, 3000)
     },
+    setToLocalStorage() {
+      localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
+    },
   },
 })
