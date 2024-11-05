@@ -1,7 +1,32 @@
 <template>
   <section>
     <v-container fluid>
-      <v-row>
+      <div class="empty-cart-title text-center" v-if="!cartItems.length">
+        <h1 style=" font-size: 50px; color: orange; height: 500px;" class="d-flex align-center justify-center">
+          <span>Your Cart Is
+            Empty
+          </span><span><svg width="100" fill="orange" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+              <path class="path1"
+                d="M409.6 1024c-56.464 0-102.4-45.936-102.4-102.4s45.936-102.4 102.4-102.4S512 865.136 512 921.6 466.064 1024 409.6 1024zm0-153.6c-28.232 0-51.2 22.968-51.2 51.2s22.968 51.2 51.2 51.2 51.2-22.968 51.2-51.2-22.968-51.2-51.2-51.2z">
+              </path>
+              <path class="path2"
+                d="M768 1024c-56.464 0-102.4-45.936-102.4-102.4S711.536 819.2 768 819.2s102.4 45.936 102.4 102.4S824.464 1024 768 1024zm0-153.6c-28.232 0-51.2 22.968-51.2 51.2s22.968 51.2 51.2 51.2 51.2-22.968 51.2-51.2-22.968-51.2-51.2-51.2z">
+              </path>
+              <path class="path3"
+                d="M898.021 228.688C885.162 213.507 865.763 204.8 844.8 204.8H217.954l-5.085-30.506C206.149 133.979 168.871 102.4 128 102.4H76.8c-14.138 0-25.6 11.462-25.6 25.6s11.462 25.6 25.6 25.6H128c15.722 0 31.781 13.603 34.366 29.112l85.566 513.395C254.65 736.421 291.929 768 332.799 768h512c14.139 0 25.6-11.461 25.6-25.6s-11.461-25.6-25.6-25.6h-512c-15.722 0-31.781-13.603-34.366-29.11l-12.63-75.784 510.206-44.366c39.69-3.451 75.907-36.938 82.458-76.234l34.366-206.194c3.448-20.677-1.952-41.243-14.813-56.424zm-35.69 48.006l-34.366 206.194c-2.699 16.186-20.043 32.221-36.39 33.645l-514.214 44.714-50.874-305.246h618.314c5.968 0 10.995 2.054 14.155 5.782 3.157 3.73 4.357 9.024 3.376 14.912z">
+              </path>
+            </svg></span>
+        </h1>
+        <v-btn @click="route.push({ name: 'homePage' })" style="
+              text-transform: none;
+              border-radius: 30px;
+              border-color: rgb(199, 199, 199)
+            " variant="outlined" density="compact" height="45" class="w-25">Go To Shop</v-btn>
+      </div>
+
+
+
+      <v-row v-else>
         <v-col cols="12">
           <v-breadcrumbs :items="['Home', 'Your cart']">
             <template v-slot:divider>
@@ -50,7 +75,7 @@
             calcTotal }} away from Free Shipping
           </v-card-text>
         </v-col>
-        <v-col cols="7">
+        <v-col cols="8">
           <v-table class="w-100">
             <thead>
               <tr>
@@ -115,6 +140,19 @@
               </tr>
             </tbody>
           </v-table>
+          <v-divider length="100%" color="black"></v-divider>
+          <v-card-text v-if="cartItems.length" class="px-0 pt-2 d-flex align-center ga-5" style="color: #6f6f6f">
+            <span><svg width="30" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 179.94 179.96" class="icon icon-shield-check">
+                <path d="M90,0,5,42.78C13.73,105.26,38.14,154.32,90,180c51.83-25.64,76.25-74.7,85-137.18Z"></path>
+                <polygon class="cls-1" fill="white"
+                  points="149.83 67.57 134.81 52.55 79.31 108.05 49.74 78.48 34.72 93.5 79.15 137.94 79.31 137.78 79.47 137.94 149.83 67.57">
+                </polygon>
+              </svg></span>
+            <span> Secure Shopping
+              Guarantee</span>
+          </v-card-text>
+          <img src="@/assets/images/cart-page-cards.webp" alt="" width="300">
         </v-col>
         <v-col cols="4">
           <v-card elevation="0">
@@ -138,21 +176,48 @@
               style="border: 1px solid #6f6f6f; border-radius: 30px; font-size: 14px;">
               <option :value="country" v-for=" country in countries" :key="country">{{ country }}</option>
             </select>
+            <div class="state mt-4">
+              <select name="" id="" class="pa-3"
+                style="border: 1px solid #6f6f6f; border-radius: 30px; font-size: 14px; width: 55%; margin-right: 1%">
+                <option :value="country" v-for=" country in countries" :key="country">{{ country }}</option>
+              </select>
+              <input class="pa-3" type="text"
+                style="border: 1px solid #6f6f6f; border-radius: 30px; font-size: 14px;  width: 43%; margin-left: 1%">
+            </div>
+            <v-card-actions class="my-5">
+              <v-btn style="
+              text-transform: none;
+              border-radius: 30px;
+              border-color: rgb(199, 199, 199);
+            " variant="elevated" density="compact" height="45" class="w-100" color="blue" elevation="0">Check
+                Out</v-btn>
+            </v-card-actions>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-text class="d-flex align-center justify-space-between">
+              <span>Total</span>
+              <span class="font-weight-bold">$ {{ calcTotal }}</span>
+            </v-card-text>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-divider length="100%" color="black"></v-divider>
+            <v-card-actions class="my-5 flex-column">
+              <v-btn style="
+              text-transform: none;
+              border-radius: 0;
+              margin-bottom: 10px;
+              " variant="outlined" density="compact" height="45" class="w-100" elevation="0">Proced To
+                Check
+                Out</v-btn>
+              <v-btn @click="route.push({ name: 'homePage' })" style="
+              text-transform: none;
+              border-radius: 0;
+
+
+              " variant="outlined" density="compact" height="45" class="w-100" elevation="0">Continue Shopping</v-btn>
+            </v-card-actions>
+
           </v-card>
         </v-col>
-        <v-col cols="12"><v-card-text v-if="cartItems.length" class="px-0 pt-2 d-flex align-center ga-5"
-            style="color: #6f6f6f">
-            <span><svg width="30" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 179.94 179.96" class="icon icon-shield-check">
-                <path d="M90,0,5,42.78C13.73,105.26,38.14,154.32,90,180c51.83-25.64,76.25-74.7,85-137.18Z"></path>
-                <polygon class="cls-1" fill="white"
-                  points="149.83 67.57 134.81 52.55 79.31 108.05 49.74 78.48 34.72 93.5 79.15 137.94 79.31 137.78 79.47 137.94 149.83 67.57">
-                </polygon>
-              </svg></span>
-            <span> Secure Shopping
-              Guarantee</span>
-          </v-card-text>
-          <img src="@/assets/images/cart-page-cards.webp" alt="" width="300"></v-col>
       </v-row>
     </v-container>
   </section>
@@ -160,7 +225,6 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, computed } from 'vue'
-import { inject } from 'vue'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
@@ -169,10 +233,6 @@ const store = cartStore()
 const getCartItems = store.getCartItems
 const deleteItem = store.deleteItem
 const { cartItems } = storeToRefs(store)
-
-const isDrawerOpen = inject('isDrawerOpen')
-const drawer = ref<any>(isDrawerOpen)
-
 const countries = ref(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
 
 const calcTotal = computed(() => {
@@ -190,4 +250,8 @@ onMounted(() => {
 })
 </script>
 
-<style></style>
+<style>
+.v-table__wrapper {
+  height: 500px;
+}
+</style>
