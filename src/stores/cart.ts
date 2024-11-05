@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const cartStore = defineStore('cartStore', {
   state: () => ({
     cartItems: [],
+    snackbar: false,
   }),
   actions: {
     addProductToCart(product: string[]) {
@@ -33,6 +34,12 @@ export const cartStore = defineStore('cartStore', {
         }
       }
       localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
+    },
+    openSnackbar() {
+      this.snackbar = true
+      setTimeout(() => {
+        this.snackbar = false
+      }, 3000)
     },
   },
 })

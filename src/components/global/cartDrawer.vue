@@ -197,6 +197,7 @@
             >Check Out</v-btn
           >
           <v-btn
+          @click="route.push({name: 'cart_Page'})"
             style="
               text-transform: none;
               border-radius: 30px;
@@ -219,6 +220,8 @@ import { ref, onMounted, computed } from 'vue'
 import { inject } from 'vue'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+const route = useRouter()
 const store = cartStore()
 const getCartItems = store.getCartItems
 const deleteItem = store.deleteItem

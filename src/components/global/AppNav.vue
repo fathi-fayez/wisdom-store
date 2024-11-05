@@ -73,6 +73,7 @@
             <div
               @click="closeDrawer"
               class="cart d-flex flex-column align-center cursor-pointer"
+              :style="`pointer-events: ${route.name == 'cart_page' ? 'none' : 'unset'}`"
             >
               <v-badge
                 v-if="cartItems.length"
@@ -170,9 +171,11 @@
 
 <script lang="ts" setup>
 import { ref, inject } from 'vue'
+import { useRoute } from 'vue-router'
 import { productsModule } from '@/stores/products'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+const route = useRoute()
 
 const productsStore = productsModule()
 const shoppingCartStore = cartStore()

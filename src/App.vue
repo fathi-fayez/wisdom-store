@@ -3,25 +3,26 @@
     <app-Layout>
       <router-view></router-view>
       <quickViewDialog />
-      <v-snackbar v-model="bar">
-        Item added to
-        <v-btn flat color="primary" @click.native="bar = false">Close</v-btn>
-      </v-snackbar>
     </app-Layout>
+    <v-snackbar v-model="snackbar" location="left bottom">
+        Item added to your cart successfuly <v-icon color="green" class="ms-2">mdi-check-circle</v-icon>
+      </v-snackbar>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, provide } from 'vue'
+import { cartStore } from './stores/cart';
+import { storeToRefs } from 'pinia';
+const store = cartStore()
+const {snackbar} = storeToRefs(store)
 import appLayout from './components/global/AppLayout.vue'
 import quickViewDialog from '@/components/quickViewDialog.vue'
 const selectedProductData = ref({})
 
 const isDialogOpen = ref(false)
-const bar = ref(true)
 const openDialog = item => {
   isDialogOpen.value = true
-  // console.log(item)
   selectedProductData.value = item
 }
 

@@ -92,6 +92,8 @@
             </div>
             <v-card-actions class="mt-7 w-100 px-0">
               <v-btn
+               @click="addItem(singleProduct)"
+                  :loading="loading"
                 variant="outlined"
                 style="
                   text-transform: none;
@@ -117,14 +119,31 @@
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { productsModule } from '@/stores/products'
+import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 const route = useRoute()
 const store = productsModule()
+const shoppingCartStore = cartStore()
 const { singleProduct } = storeToRefs(store)
 const tab = ref('')
 const quantity = ref(1)
+const loading = ref(false)
 const getSingleProduct = store.getSingleProduct
+const openSnackbar = shoppingCartStore.openSnackbar
+const addToCart = shoppingCartStore.addProductToCart
+
 const productId = ref(route.params.productId)
+
+
+const addItem = item => {
+  item.quantity = quantity.value
+  addToCart(item)
+  openSnackbar()
+  loading.value = true
+  setTimeout(() => {
+    loading.value  = false
+  }, 1000)
+}
 
 watch(
   () => route.params.productId,

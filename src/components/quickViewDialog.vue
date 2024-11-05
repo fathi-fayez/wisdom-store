@@ -132,12 +132,14 @@ import { ref, inject } from 'vue'
 import { cartStore } from '@/stores/cart'
 const store = cartStore()
 const addToCart = store.addProductToCart
+const openSnackbar = store.openSnackbar
 const addItem = item => {
   item.quantity = quantity.value
   addToCart(item)
+  openSnackbar()
   loading.value = true
   setTimeout(() => {
-    loading.value = false
+    loading.value  = false
   }, 1000)
 }
 const dialog = inject('isDialogOpen')

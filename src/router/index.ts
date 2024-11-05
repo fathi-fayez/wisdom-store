@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'product_details',
       component: () => import('@/views/productDetails.vue'),
     },
+    {
+      path: '/cart-page',
+      name: 'cart_Page',
+      component: () => import('@/views/cartPage.vue'),
+    },
   ],
   scrollBehavior() {
     return { top: 0, behavior: 'smooth' }
