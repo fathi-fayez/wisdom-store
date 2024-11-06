@@ -189,8 +189,8 @@
               text-transform: none;
               border-radius: 30px;
               border-color: rgb(199, 199, 199);
-            " variant="elevated" density="compact" height="45" class="w-100" color="blue" elevation="0">Check
-                Out</v-btn>
+            " variant="elevated" density="compact" height="45" class="w-100" color="blue" elevation="0">Calculate
+                Shipping</v-btn>
             </v-card-actions>
             <v-divider length="100%" color="black"></v-divider>
             <v-divider length="100%" color="black"></v-divider>
