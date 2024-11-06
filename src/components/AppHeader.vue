@@ -21,7 +21,6 @@
 header {
   background-image: url('@/assets/images/banner-bg.jpg');
   background-size: cover;
-  background-position: -40px top;
   height: 490px;
 }
 

@@ -3,26 +3,18 @@
     <headerComponent />
     <theFeatures />
     <topOffers />
-    <productComponent
-      :products="flashDeals"
-      title="Flash Deals"
-      titleColor="blue"
-    />
+    <productComponent :products="flashDeals" title="Flash Deals" titleColor="blue" />
     <topCategories />
     <newProducts :products="filteredProducts" />
     <qualityFeatures />
-    <productComponent
-      :products="groceriesProducts"
-      title="Groceries Products"
-      titleColor="black"
-    />
+    <productComponent :products="groceriesProducts" title="Groceries Products" titleColor="black" />
     <whyShopWithUs />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import headerComponent from '../components/headerComponent.vue'
+import headerComponent from '../components/AppHeader.vue'
 import theFeatures from '../components/theFeatures.vue'
 import topOffers from '../components/topOffers.vue'
 import productComponent from '@/components/productsSwiper.vue'
