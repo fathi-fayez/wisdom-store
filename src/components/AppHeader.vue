@@ -2,8 +2,8 @@
   <header>
     <v-container>
       <v-row>
-        <v-col cols="6" class="landing-text">
-          <h1>
+        <v-col cols="12" class="landing-text ps-12">
+          <h1 class="text-h5  text-sm-h4   text-md-h3 text-lg-h3">
             <span> Huge Saving </span> on <br />
             UHD Televisions
           </h1>

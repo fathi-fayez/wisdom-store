@@ -3,15 +3,15 @@
     <div class="banner">
       <h1 class="pt-10">Cyber Monday <span>Best Offers</span></h1>
       <v-container>
-        <v-row class="mt-5">
-          <v-col cols="6" class="left-content">
+        <v-row class="mt-5 ga-10 flex-md-nowrap">
+          <v-col cols="10" md="6" class="left-content mx-auto">
             <h3>
               <span>save 10% more </span>on online <br />
               & in-store shopping with Superkart+
             </h3>
             <p>Limit one offer per guest. <a href="#">Get the offer</a></p>
           </v-col>
-          <v-col cols="6" class="right-content">
+          <v-col cols="10" md="6" class="right-content mx-auto">
             <h3>
               <span>change to claim gifts <br /> </span>inside every purchase
               above $199
@@ -121,25 +121,24 @@ const categories = ref<item[]>([
 
 <style scoped>
 .banner {
-  height: 350px;
+  min-height: 350px;
   margin-bottom: 64px;
   background-image: url('../assets/images/why-shop-with-us-banner.webp');
   background-size: cover;
   text-align: center;
   color: white;
 }
-.banner .v-row {
-  gap: 30px;
-  flex-wrap: nowrap;
-}
+
 .banner h1 {
   font-weight: 900;
 }
+
 .banner h3 {
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 20px;
 }
+
 .left-content,
 .right-content {
   background-color: rgb(181, 9, 255);
@@ -149,9 +148,11 @@ const categories = ref<item[]>([
   justify-content: center;
   flex-direction: column;
 }
+
 .bottom-content {
   margin-top: 20px;
 }
+
 .bottom-content a {
   color: rgb(239, 205, 9);
 }
@@ -161,6 +162,7 @@ img {
   border-radius: 50%;
   border: 4px dotted transparent;
 }
+
 img:hover {
   transform: scale(0.9);
   border-color: rgb(2 33 143);

@@ -155,4 +155,8 @@ svg {
   padding: 10px;
   fill: white;
 }
+
+.image-parent img {
+  max-width: 100%;
+}
 </style>
