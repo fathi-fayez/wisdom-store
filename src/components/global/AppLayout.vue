@@ -1,12 +1,14 @@
 <template>
   <v-layout class="flex-column">
     <CartDrawer />
-    <AppNav v-if="route.name != 'check_out'" />
-    <FixedNav v-if="route.name != 'check_out'" />
-    <v-main :class="{ mt: route.name != 'check_out' }">
+    <AppNav v-show="windowWidth > 990 && route.name != 'check_out'" />
+    <FixedNav v-show="windowWidth > 990 && route.name != 'check_out'" />
+    <responsiveNav v-show="windowWidth <= 990 && route.name != 'check_out'" />
+    <v-main :class="route.name == 'check_out' ? 'm-0' : (windowWidth <= 990 ? 'low-margin' : 'high-margin')">
+
       <slot></slot>
     </v-main>
-    <AppFooter v-if="route.name != 'check_out'" />
+    <AppFooter v-show="route.name != 'check_out'" />
   </v-layout>
 </template>
 
@@ -15,7 +17,8 @@ import CartDrawer from './CartDrawer.vue'
 import AppFooter from '@/components/global/AppFooter.vue'
 import AppNav from './AppNav.vue'
 import FixedNav from './FixedNav.vue'
-import { ref, provide } from 'vue'
+import responsiveNav from './ResponsiveNav.vue'
+import { ref, provide, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
@@ -26,9 +29,23 @@ const toggleDrawer = () => {
 
 provide('isDrawerOpen', isDrawerOpen)
 provide('toggleDrawer', toggleDrawer)
+
+const windowWidth = ref(0)
+
+onMounted(() => {
+  windowWidth.value = window.innerWidth
+  window.onresize = () => {
+    windowWidth.value = window.innerWidth
+  }
+
+})
 </script>
 <style>
-.mt {
+.high-margin {
   margin-top: 156px !important;
+}
+
+.low-margin {
+  margin-top: 65px !important;
 }
 </style>
