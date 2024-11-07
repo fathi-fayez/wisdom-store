@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row class="align-center">
         <v-col cols="4">
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon @click="openMenu"></v-app-bar-nav-icon>
           <v-icon>mdi-magnify</v-icon>
         </v-col>
         <v-col cols="4">
@@ -41,8 +41,12 @@ import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 const shoppingCartStore = cartStore()
 const { cartItems } = storeToRefs(shoppingCartStore)
+const toggleMenu = inject('toggleMenu')
 const toggleDrawer = inject('toggleDrawer')
 
+const openMenu = () => {
+  toggleMenu()
+}
 const openCart = () => {
   toggleDrawer()
 }

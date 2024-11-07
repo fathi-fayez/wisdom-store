@@ -1,6 +1,7 @@
 <template>
   <v-layout class="flex-column">
     <CartDrawer />
+    <MenuDrawer />
     <AppNav v-show="windowWidth > 990 && route.name != 'check_out'" />
     <FixedNav v-show="windowWidth > 990 && route.name != 'check_out'" />
     <responsiveNav v-show="windowWidth <= 990 && route.name != 'check_out'" />
@@ -18,6 +19,7 @@ import AppFooter from '@/components/global/AppFooter.vue'
 import AppNav from './AppNav.vue'
 import FixedNav from './FixedNav.vue'
 import responsiveNav from './ResponsiveNav.vue'
+import MenuDrawer from './MenuDrawer.vue'
 import { ref, provide, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
@@ -26,9 +28,16 @@ const isDrawerOpen = ref(false)
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
+const isMenuOpen = ref(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 provide('isDrawerOpen', isDrawerOpen)
+provide('isMenuOpen', isMenuOpen)
+
 provide('toggleDrawer', toggleDrawer)
+provide('toggleMenu', toggleMenu)
 
 const windowWidth = ref(0)
 
