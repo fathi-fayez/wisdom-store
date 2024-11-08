@@ -15,12 +15,13 @@
     </v-container>
     <swiper :modules="[Pagination, Navigation, Autoplay]" :slides-per-view="4" :space-between="10"
       :pagination="{ clickable: true }" navigation
-      :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }" class="pb-10">
+      :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }" :breakpoints="breakPoints"
+      class="pb-10">
       <swiper-slide v-for="item in products" :key="item.id">
         <v-card elevation="0" class="pb-5" style="user-select: none">,
           <div class="image-container position-relative">
             <img :src="showenItem[item.title] ? showenItem[item.title] : item.thumbnail
-              " style="width: 100%; height: 300px" alt="" />
+              " style="width: 100% !important; height: 300px" alt="" />
             <v-btn @click="openQuickView(item)" class="quick-view-btn" density="compact" width="80" height="40"
               variant="outlined" style="
                 position: absolute;
@@ -34,10 +35,10 @@
               ">Quick View</v-btn>
           </div>
           <v-card-text class="pl-0 font-weight-bold">
-            ({{ item.title }})
+            ({{ item.title.split(' ').slice(0, 2).join(' ') }})
             {{
-              item.description.split(' ').length <= 10 ? item.description :
-                item.description.split(' ').slice(0, 9).join(' ') + ' ...' }} </v-card-text>
+              item.description.split(' ').length <= 7 ? item.description :
+                item.description.split(' ').slice(0, 7).join(' ') + ' ...' }} </v-card-text>
               <v-rating v-model="item.rating" half-increments readonly color="yellow-darken-2" size="small"
                 density="compact">
               </v-rating>
@@ -51,7 +52,7 @@
               </v-card-text>
               <v-btn-toggle v-model="showenItem[item.title]" mandatory>
                 <v-btn rounded="xl" size="x-small" v-for="(pic, i) in item.images" :key="i" :value="pic">
-                  <img :src="pic" alt="" width="30" height="30" style="border-radius: 50%; border: 1px solid black" />
+                  <img :src="pic" alt="" width="30" height="30" style="border-radius: 50%;  border: 1px solid black" />
                 </v-btn>
               </v-btn-toggle>
               <div>
@@ -77,6 +78,14 @@
 import { ref, inject } from 'vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Pagination, Navigation, Autoplay } from 'swiper'
+
+const breakPoints = ref({
+  0: { slidesPerView: 1 },
+  580: { slidesPerView: 2 },
+  767: { slidesPerView: 3 },
+  990: { slidesPerView: 4 },
+
+})
 
 const showenItem = ref({})
 const props = defineProps({
