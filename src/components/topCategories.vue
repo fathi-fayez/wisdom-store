@@ -34,7 +34,7 @@
       </div>
       <v-container fluid>
         <v-row>
-          <v-col cols="2" v-for="cat in categories" :key="cat.title">
+          <v-col cols="6" sm="4" md="3" lg="2" v-for="cat in categories" :key="cat.title">
             <v-card class="text-center" elevation="0">
               <img :src="cat.image" alt="" />
               <v-card-text class="font-weight-bold">{{

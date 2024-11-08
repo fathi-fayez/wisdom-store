@@ -2,7 +2,7 @@
   <v-footer :app="false">
     <v-container fluid>
       <v-row class="pb-10">
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3">
           <v-card elevation="0">
             <v-card-title class="font-weight-bold mb-5">Shop</v-card-title>
             <v-card-text>Electronics</v-card-text>
@@ -14,7 +14,7 @@
             <v-card-text>Weekly Special</v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3">
           <v-card elevation="0">
             <v-card-title class="font-weight-bold mb-5">FURTHER INFO.</v-card-title>
             <v-card-text>About</v-card-text>
@@ -26,7 +26,7 @@
             <v-card-text>Blog</v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3">
           <v-card elevation="0">
             <v-card-title class="font-weight-bold mb-5">CUSTOMER SERVICE</v-card-title>
             <v-card-text>Search Terms</v-card-text>
@@ -38,7 +38,7 @@
             <v-card-text>Store Locations</v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3">
           <v-card elevation="0">
             <v-card-title class="font-weight-bold mb-5"><img src="@/assets/images/footer-logo.webp"
                 alt="" /></v-card-title>
@@ -157,6 +157,7 @@ svg {
 }
 
 .image-parent img {
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 </style>

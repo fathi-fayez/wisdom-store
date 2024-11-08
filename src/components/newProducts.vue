@@ -13,21 +13,20 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col v-else cols="7" class="mt-16">
+        <v-col v-else cols="12" lg="7" class="mt-16">
           <swiper :modules="[Pagination]" :slides-per-view="3" :space-between="10" :pagination="{ clickable: true }"
-            class="pb-10">
+            :breakpoints="breakPoints" class="pb-10">
             <swiper-slide v-for="item in products" :key="item.id">
               <v-card elevation="0" class="pb-5" style="user-select: none">
                 <img :src="showenItem[item.title]
                   ? showenItem[item.title]
                   : item.thumbnail
-                  " style="width: 100%; height: 300px" alt="" />
+                  " style="width: 100% !important; height: 300px" alt="" />
                 <v-card-text class="pl-0 font-weight-bold">
-                  ({{ item.title }})
+                  ({{ item.title.split(' ').slice(0, 2).join(' ') }})
                   {{
-                    item.title + ' ' + item.description.split(' ').length <= 7 ? item.description :
-                      item.description.split(' ').slice(0, 4).join(' ') +
-                      ' ...' }} </v-card-text>
+                    item.description.split(' ').length <= 6 ? item.description :
+                      item.description.split(' ').slice(0, 6).join(' ') + ' ...' }} </v-card-text>
                     <v-card-text class="pl-0">
                       <del>${{ item.price }}</del> From
                       <span class="text-red text-h6 font-weight-bold">${{
@@ -39,8 +38,8 @@
                     </v-card-text>
                     <v-btn-toggle v-model="showenItem[item.title]" mandatory>
                       <v-btn rounded="xl" size="x-small" v-for="(pic, i) in item.images" :key="i" :value="pic">
-                        <img :src="pic" alt="" width="30" height="30"
-                          style="border-radius: 50%; border: 1px solid black" />
+                        <img :src="pic" alt=""
+                          style="width: 50px !important;border-radius: 50%; border: 1px solid black" />
                       </v-btn>
                     </v-btn-toggle>
                     <div>
@@ -60,7 +59,7 @@
             </swiper-slide>
           </swiper>
         </v-col>
-        <v-col cols="5"><img src="@/assets/images/vr-banner.webp" class="w-100" alt="" />
+        <v-col class="order-1" cols="12" lg="5"><img src="@/assets/images/vr-banner.webp" class="w-100" alt="" />
         </v-col>
       </v-row>
     </v-container>
@@ -77,6 +76,12 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+})
+const breakPoints = ref({
+  0: { slidesPerView: 1 },
+  580: { slidesPerView: 2 },
+  990: { slidesPerView: 3 },
+
 })
 </script>
 
