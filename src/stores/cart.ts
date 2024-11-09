@@ -1,51 +1,69 @@
 import { defineStore } from 'pinia'
 
+// Define interfaces for products and cart items
+interface Product {
+  id: number
+  title: string
+  price: number
+  quantity: number
+}
+
+interface CartItem extends Product {}
+
+// Define the shape of the state
+interface CartState {
+  cartItems: CartItem[]
+  snackbar: boolean
+}
+
 export const cartStore = defineStore('cartStore', {
-  state: () => ({
+  state: (): CartState => ({
     cartItems: [],
     snackbar: false,
   }),
+
   actions: {
-    addProductToCart(product: string[]) {
+    addProductToCart(product: CartItem) {
       let exists = false
       for (let i = 0; i < this.cartItems.length; i++) {
-        if (this.cartItems[i].id == product.id) {
+        if (this.cartItems[i].id === product.id) {
           this.cartItems[i].quantity += product.quantity
           exists = true
           break
         }
       }
       if (!exists) {
-        this.cartItems.push(JSON.parse(JSON.stringify(product)))
+        this.cartItems.push({ ...product })
       }
       localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
-      console.log(this.cartItems[0].quantity)
+      console.log(this.cartItems[0]?.quantity)
     },
+
     getCartItems() {
-      if (localStorage.getItem('cart-items')) {
-        this.cartItems = JSON.parse(localStorage.getItem('cart-items'))
+      const storedItems = localStorage.getItem('cart-items')
+      if (storedItems) {
+        this.cartItems = JSON.parse(storedItems)
       }
     },
-    deleteItem(id) {
-      for (let i = 0; i < this.cartItems.length; i++) {
-        if (this.cartItems[i].id == id) {
-          this.cartItems.splice(i, 1)
-          break
-        }
-      }
+
+    deleteItem(id: number) {
+      this.cartItems = this.cartItems.filter(item => item.id !== id)
       localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
     },
+
     openSnackbar() {
       this.snackbar = true
       setTimeout(() => {
         this.snackbar = false
       }, 3000)
     },
+
     setToLocalStorage() {
       localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
     },
+
     resetItems() {
-      this.cartItems = [];
+      this.cartItems = []
       localStorage.removeItem('cart-items')
     },
   },

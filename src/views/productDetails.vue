@@ -73,27 +73,40 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { productsModule } from '@/stores/products'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+
+interface Product {
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
+  rating: {
+    rate: number
+    count: number
+  }
+}
+
 const route = useRoute()
 const store = productsModule()
 const shoppingCartStore = cartStore()
 const { singleProduct } = storeToRefs(store)
-const tab = ref('')
-const quantity = ref(1)
-const loading = ref(false)
+const tab = ref<string>('')
+const quantity = ref<number>(1)
+const loading = ref<boolean>(false)
 const getSingleProduct = store.getSingleProduct
 const openSnackbar = shoppingCartStore.openSnackbar
 const addToCart = shoppingCartStore.addProductToCart
+const productId = ref<string | undefined>(route.params.productId as string | undefined)
 
-const productId = ref(route.params.productId)
 
-
-const addItem = item => {
+const addItem = (item: Product) => {
   item.quantity = quantity.value
   addToCart(item)
   openSnackbar()

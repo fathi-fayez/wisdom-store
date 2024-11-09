@@ -5,8 +5,8 @@
       <quickViewDialog />
     </app-Layout>
     <v-snackbar v-model="snackbar" location="left bottom">
-        Item added to your cart successfuly <v-icon color="green" class="ms-2">mdi-check-circle</v-icon>
-      </v-snackbar>
+      Item added to your cart successfuly <v-icon color="green" class="ms-2">mdi-check-circle</v-icon>
+    </v-snackbar>
   </div>
 </template>
 
@@ -15,13 +15,21 @@ import { ref, provide } from 'vue'
 import { cartStore } from './stores/cart';
 import { storeToRefs } from 'pinia';
 const store = cartStore()
-const {snackbar} = storeToRefs(store)
+const { snackbar } = storeToRefs(store)
 import appLayout from './components/global/AppLayout.vue'
 import quickViewDialog from '@/components/quickViewDialog.vue'
-const selectedProductData = ref({})
 
-const isDialogOpen = ref(false)
-const openDialog = item => {
+interface Product {
+  id: number
+  title: string
+  price: number
+  quantity: number
+}
+
+const selectedProductData = ref<Product | {}>({})
+
+const isDialogOpen = ref<boolean>(false)
+const openDialog = (item: Product | {}) => {
   isDialogOpen.value = true
   selectedProductData.value = item
 }

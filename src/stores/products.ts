@@ -1,11 +1,40 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
+// Define interfaces for products and categories
+interface Product {
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
+  rating: {
+    rate: number
+    count: number
+  }
+}
+
+interface Category {
+  title: string
+  route: string
+}
+
+// Define the shape of your state
+interface ProductsState {
+  flashDeals: Product[]
+  filteredProducts: Product[]
+  groceriesProducts: Product[]
+  categories: Category[]
+  categorieProducts: Product[]
+  singleProduct: Product | null
+}
+
 export const productsModule = defineStore('productsModule', {
-  state: () => ({
-    flashDeals: [] as any[],
-    filteredProducts: [] as any[],
-    groceriesProducts: [] as any[],
+  state: (): ProductsState => ({
+    flashDeals: [],
+    filteredProducts: [],
+    groceriesProducts: [],
     categories: [
       { title: 'Beauty', route: 'beauty' },
       { title: 'Fragrances', route: 'fragrances' },
@@ -15,19 +44,20 @@ export const productsModule = defineStore('productsModule', {
       { title: 'Kitchen Accessories', route: 'kitchen-accessories' },
       { title: 'Mobile Accessories', route: 'mobile-accessories' },
     ],
-    categorieProducts: [] as any[],
-    singleProduct: '',
+    categorieProducts: [],
+    singleProduct: null,
   }),
+
   actions: {
     async getProducts() {
       try {
         const res = await axios.get('https://dummyjson.com/products')
-        this.flashDeals = res.data.products.slice(0, 8)
+        this.flashDeals = res.data.products.slice(0, 8) as Product[]
         this.filteredProducts = res.data.products.filter(
-          (el: any) => el.category === 'furniture',
+          (el: Product) => el.category === 'furniture',
         )
         this.groceriesProducts = res.data.products.filter(
-          (el: any) => el.category === 'groceries',
+          (el: Product) => el.category === 'groceries',
         )
       } catch (err) {
         console.error(err)
@@ -39,17 +69,18 @@ export const productsModule = defineStore('productsModule', {
         const res = await axios.get(
           `https://dummyjson.com/products/category/${category}?limit=20`,
         )
-        this.categorieProducts = res.data.products
+        this.categorieProducts = res.data.products as Product[]
       } catch (err) {
         console.error(err)
       }
     },
-    async getSingleProduct(productId: any) {
+
+    async getSingleProduct(productId: number) {
       try {
         const res = await axios.get(
           `https://dummyjson.com/products/${productId}`,
         )
-        this.singleProduct = res.data
+        this.singleProduct = res.data as Product
       } catch (err) {
         console.error(err)
       }
