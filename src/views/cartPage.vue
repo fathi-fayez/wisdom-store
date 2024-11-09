@@ -75,7 +75,7 @@
             calcTotal }} away from Free Shipping
           </v-card-text>
         </v-col>
-        <v-col cols="8">
+        <v-col cols="12" md="8">
           <v-table class="w-100">
             <thead>
               <tr>
@@ -154,7 +154,7 @@
           </v-card-text>
           <img src="@/assets/images/cart-page-cards.webp" alt="" width="300">
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4" class="mt-8 mt-md-0">
           <v-card elevation="0">
             <v-card-title style="font-weight: bold;">
               Order SUMMARY

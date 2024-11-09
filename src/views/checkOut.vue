@@ -2,7 +2,7 @@
   <section>
     <v-container fluid class="pa-0">
       <v-row>
-        <v-col cols="7">
+        <v-col cols="12" md="6" lg="7">
           <v-card class="w-100" elevation="0" style="padding: 60px 40px 0 120px;">
             <v-card-text class="py-0 font-weight-bold">new-ella-demo</v-card-text>
             <v-breadcrumbs :items="['Cart', 'Information']">
@@ -58,23 +58,23 @@
             </select>
 
             <div class="user-name d-flex align-center justify-center mt-4 ga-3">
-              <input class="pa-3" type="text"
+              <input class="pa-3" type="text" placeholder="First Name"
                 style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;  width: 100%;">
-              <input class="pa-3" type="text"
+              <input class="pa-3" type="text" placeholder="Last Name"
                 style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;  width: 100%;">
             </div>
-            <input class="pa-3 mt-4" type="text"
+            <input class="pa-3 mt-4" type="text" placeholder="Address"
               style="border: 1px solid #6f6f6f; border-radius:3px; font-size: 14px;  width: 100%">
-            <input class="pa-3 mt-4" type="text"
+            <input class="pa-3 mt-4" type="text" placeholder="Apartment"
               style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;  width: 100%;">
             <div class="city-container d-flex align-center justify-center mt-4 ga-3">
-              <input class="pa-3" type="text"
+              <input class="pa-3" type="text" placeholder="City"
                 style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;  width: 100%;">
               <select name="" id="" class="w-100 pa-3"
                 style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;">
                 <option :value="country" v-for=" country in countries" :key="country">{{ country }}</option>
               </select>
-              <input class="pa-3" type="text"
+              <input class="pa-3" type="text" placeholder="Postal Code"
                 style="border: 1px solid #6f6f6f; border-radius: 3px; font-size: 14px;  width: 100%;">
             </div>
             <v-card-actions class="justify-end pa-0">
@@ -86,7 +86,7 @@
             <v-card-text style="font-size: 12px">All Rights Reserved new-ella-demo</v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="5" class="pa-0">
+        <v-col cols="12" md="6" lg="5" class="pa-0">
           <v-card color="grey-lighten-3" elevation="0" width="100%" height="100vh" style="padding: 60px 120px 0 40px;">
             <v-card class="d-flex align-center justify-space-between" v-for="item in cartItems" :key="item.id"
               width="100%" color="transparent" elevation="0">

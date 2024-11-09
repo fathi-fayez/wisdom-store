@@ -8,26 +8,15 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="3" v-for="item in categorieProducts" :key="item.id">
+        <v-col cols="12" sm="6" md="4" lg="3" v-for="item in categorieProducts" :key="item.id">
           <v-card elevation="0" class="pb-5" style="user-select: none">
             <div class="image-container position-relative">
-              <img
-                :src="
-                  showenItem[item.title]
-                    ? showenItem[item.title]
-                    : item.thumbnail
-                "
-                style="width: 100%; height: 300px"
-                alt=""
-              />
-              <v-btn
-                @click="openQuickView(item)"
-                class="quick-view-btn"
-                density="compact"
-                width="120"
-                height="40"
-                variant="outlined"
-                style="
+              <img :src="showenItem[item.title]
+                ? showenItem[item.title]
+                : item.thumbnail
+                " style="width: 100%; height: 300px" alt="" />
+              <v-btn @click="openQuickView(item)" class="quick-view-btn" density="compact" width="120" height="40"
+                variant="outlined" style="
                   position: absolute;
                   top: 50%;
                   left: 50%;
@@ -36,74 +25,41 @@
                   border-radius: 30px;
                   transition: 0.2 all ease-in-out;
                   opacity: 0;
-                "
-                >Quick View</v-btn
-              >
+                ">Quick View</v-btn>
             </div>
             <v-card-text class="pl-0 font-weight-bold">
-              ({{ item.title }})
-              {{
-                item.title + ' ' + item.description.split(' ').length <= 7
-                  ? item.description
-                  : item.description.split(' ').slice(0, 4).join(' ') + ' ...'
-              }}
-            </v-card-text>
-            <v-rating
-              v-model="item.rating"
-              half-increments
-              readonly
-              color="yellow-darken-2"
-              size="small"
-              density="compact"
-            >
-            </v-rating>
-            <v-card-text class="pl-0">
-              <del>${{ item.price }}</del> From
-              <span class="text-red text-h6 font-weight-bold"
-                >${{
-                  Math.ceil(
-                    item.price - item.price * (item.discountPercentage / 100),
-                  )
-                }}</span
-              >
-            </v-card-text>
-            <v-btn-toggle v-model="showenItem[item.title]">
-              <v-btn
-                rounded="xl"
-                size="x-small"
-                v-for="(pic, i) in item.images"
-                :key="i"
-                :value="pic"
-              >
-                <img
-                  :src="pic"
-                  alt=""
-                  width="30"
-                  height="30"
-                  style="border-radius: 50%; border: 1px solid black"
-                />
-              </v-btn>
-            </v-btn-toggle>
-            <div>
-              <v-btn
-                @click="
-                  $router.push({
-                    name: 'product_details',
-                    params: { productId: item.id },
-                  })
-                "
-                density="compact"
-                class="py-3 px-9 w-75"
-                style="
+              {{ `(${item.title}) ${item.description}`.length <= 80 ? `(${item.title}) ${item.description}` :
+                `(${item.title}) ${item.description}`.substring(0, 80) + "..." }} </v-card-text>
+                <v-rating v-model="item.rating" half-increments readonly color="yellow-darken-2" size="small"
+                  density="compact">
+                </v-rating>
+                <v-card-text class="pl-0">
+                  <del>${{ item.price }}</del> From
+                  <span class="text-red text-h6 font-weight-bold">${{
+                    Math.ceil(
+                      item.price - item.price * (item.discountPercentage / 100),
+                    )
+                  }}</span>
+                </v-card-text>
+                <v-btn-toggle v-model="showenItem[item.title]">
+                  <v-btn rounded="xl" size="x-small" v-for="(pic, i) in item.images" :key="i" :value="pic">
+                    <img :src="pic" alt="" width="30" height="30" style="border-radius: 50%; border: 1px solid black" />
+                  </v-btn>
+                </v-btn-toggle>
+                <div>
+
+                  <v-btn @click="
+                    $router.push({
+                      name: 'product_details',
+                      params: { productId: item.id },
+                    })
+                    " density class="py-3 px-9 w-75" style="
                   text-transform: none;
                   border-radius: 30px;
                   display: block;
                   margin: 20px auto;
-                "
-                variant="outlined"
-                >Choose Option</v-btn
-              >
-            </div>
+                " variant="outlined">Choose Option</v-btn>
+                </div>
           </v-card>
         </v-col>
       </v-row>
@@ -149,5 +105,9 @@ onMounted(() => {
 <style scoped>
 .image-container:hover .quick-view-btn {
   opacity: 1 !important;
+}
+
+img {
+  width: 100% !important;
 }
 </style>

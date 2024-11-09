@@ -35,10 +35,8 @@
               ">Quick View</v-btn>
           </div>
           <v-card-text class="pl-0 font-weight-bold">
-            ({{ item.title.split(' ').slice(0, 2).join(' ') }})
-            {{
-              item.description.split(' ').length <= 7 ? item.description :
-                item.description.split(' ').slice(0, 7).join(' ') + ' ...' }} </v-card-text>
+            {{ `(${item.title}) ${item.description}`.length <= 80 ? `(${item.title}) ${item.description}` :
+              `(${item.title}) ${item.description}`.substring(0, 80) + "..." }} </v-card-text>
               <v-rating v-model="item.rating" half-increments readonly color="yellow-darken-2" size="small"
                 density="compact">
               </v-rating>

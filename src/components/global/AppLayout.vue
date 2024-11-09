@@ -14,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import CartDrawer from './CartDrawer.vue'
+import CartDrawer from '@/components/global/CartDrawer.vue'
 import AppFooter from '@/components/global/AppFooter.vue'
-import AppNav from './AppNav.vue'
-import FixedNav from './FixedNav.vue'
-import responsiveNav from './ResponsiveNav.vue'
-import MenuDrawer from './MenuDrawer.vue'
+import AppNav from '@/components/global/AppNav.vue'
+import FixedNav from '@/components/global/FixedNav.vue'
+import responsiveNav from '@/components/global/ResponsiveNav.vue'
+import MenuDrawer from '@/components/global/MenuDrawer.vue'
 import { ref, provide, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()

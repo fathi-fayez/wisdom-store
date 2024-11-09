@@ -23,10 +23,8 @@
                   : item.thumbnail
                   " style="width: 100% !important; height: 300px" alt="" />
                 <v-card-text class="pl-0 font-weight-bold">
-                  ({{ item.title.split(' ').slice(0, 2).join(' ') }})
-                  {{
-                    item.description.split(' ').length <= 6 ? item.description :
-                      item.description.split(' ').slice(0, 6).join(' ') + ' ...' }} </v-card-text>
+                  {{ `(${item.title}) ${item.description}`.length <= 60 ? `(${item.title}) ${item.description}` :
+                    `(${item.title}) ${item.description}`.substring(0, 60) + "..." }}</v-card-text>
                     <v-card-text class="pl-0">
                       <del>${{ item.price }}</del> From
                       <span class="text-red text-h6 font-weight-bold">${{

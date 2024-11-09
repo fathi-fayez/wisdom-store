@@ -157,7 +157,13 @@ svg {
 }
 
 .image-parent img {
-  width: 100% !important;
+  /* width: 100% !important; */
   max-width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .image-parent img {
+    width: 100% !important;
+  }
 }
 </style>

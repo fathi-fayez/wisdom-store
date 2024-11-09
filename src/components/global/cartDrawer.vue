@@ -37,8 +37,8 @@
             </g>
           </svg>
           <v-progress-linear color="red" height="10" :model-value="parseInt((calcTotal / 10000) * 100) <= 100
-              ? parseInt((calcTotal / 10000) * 100)
-              : 100
+            ? parseInt((calcTotal / 10000) * 100)
+            : 100
             " striped>
           </v-progress-linear>
         </div>
@@ -49,7 +49,7 @@
           order now is included Free Shipping
         </v-card-text>
         <v-card-actions v-if="!cartItems.length">
-          <v-btn @click="drawer = false" style="
+          <v-btn @click="drawer = false; route.push({ name: 'homePage' })" style="
               text-transform: none;
               border-radius: 30px;
               border-color: rgb(199, 199, 199);
