@@ -1,6 +1,5 @@
 <template>
   <v-layout class="flex-column">
-    <cartDrawer />
     <MenuDrawer />
     <AppNav v-show="windowWidth > 990 && route.name != 'check_out'" />
     <FixedNav v-show="windowWidth > 990 && route.name != 'check_out'" />
@@ -14,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import cartDrawer from '@/components/global/CartDrawer.vue'
+// import cartDrawer from '@/components/global/CartDrawer.vue'
 import AppFooter from '@/components/global/AppFooter.vue'
 import AppNav from '@/components/global/AppNav.vue'
 import FixedNav from '@/components/global/FixedNav.vue'
