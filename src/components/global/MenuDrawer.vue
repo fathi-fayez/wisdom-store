@@ -93,7 +93,7 @@ import { storeToRefs } from 'pinia'
 const productsStore = productsModule()
 const { categories } = storeToRefs(productsStore)
 const isMenuOpen = inject('isMenuOpen')
-const drawer = ref<any>(isMenuOpen)
+const drawer = ref<Boolean>(isMenuOpen)
 </script>
 
 <style></style>

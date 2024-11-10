@@ -72,18 +72,42 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, inject } from 'vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Pagination, Navigation, Autoplay } from 'swiper'
 
-const breakPoints = ref({
+interface Product {
+  id: number
+  title: string
+  price: number
+  quantity?: number
+  description: string
+  category: string
+  image: string
+  rating: {
+    rate: number
+    count: number
+  }
+}
+
+// Define the type for each breakpoint
+type Breakpoint = {
+  slidesPerView: number;
+};
+
+// Define the type for the entire breakPoints object
+type BreakPoints = {
+  [key: number]: Breakpoint; // Index signature for dynamic keys
+};
+
+// Create the ref with the specified type
+const breakPoints = ref<BreakPoints>({
   0: { slidesPerView: 1 },
   580: { slidesPerView: 2 },
   767: { slidesPerView: 3 },
   990: { slidesPerView: 4 },
-
-})
+});
 
 const showenItem = ref({})
 const props = defineProps({
@@ -101,7 +125,7 @@ const props = defineProps({
 
 const openDialog = inject('openDialog')
 
-const openQuickView = item => {
+const openQuickView = (item: Product) => {
   openDialog(item)
 }
 </script>

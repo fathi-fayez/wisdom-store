@@ -121,8 +121,8 @@ import { ref, computed } from 'vue'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 import orderSuccess from '@/components/orderSuccess.vue'
-const countries = ref(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
-const dialog = ref(false)
+const countries = ref<string[]>(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
+const dialog = ref<boolean>(false)
 const store = cartStore()
 const { cartItems } = storeToRefs(store)
 const calcTotal = computed(() => {

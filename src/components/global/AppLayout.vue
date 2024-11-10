@@ -28,7 +28,7 @@ const isDrawerOpen = ref(false)
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
-const isMenuOpen = ref(false)
+const isMenuOpen = ref<boolean>(false)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }

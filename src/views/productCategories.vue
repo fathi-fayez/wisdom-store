@@ -78,7 +78,7 @@ const getProductsByCategory = store.getProductsByCategory
 const route = useRoute()
 const productsCategory = ref(route.params.category)
 const showenItem = ref({})
-const loading = ref(false)
+const loading = ref < Boolean > (false)
 
 const openDialog = inject('openDialog')
 

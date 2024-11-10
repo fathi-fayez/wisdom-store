@@ -234,7 +234,8 @@ const getCartItems = store.getCartItems
 const deleteItem = store.deleteItem
 const setToLocalStorage = store.setToLocalStorage
 const { cartItems } = storeToRefs(store)
-const countries = ref(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
+const countries = ref<string[]>(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
+
 
 const calcTotal = computed(() => {
   let total = 0
