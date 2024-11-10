@@ -45,7 +45,6 @@ export const cartStore = defineStore('cartStore', {
         this.cartItems.push({ ...product })
       }
       localStorage.setItem('cart-items', JSON.stringify(this.cartItems))
-      console.log(this.cartItems[0]?.quantity)
     },
 
     getCartItems() {
