@@ -23,7 +23,16 @@ interface Product {
   id: number
   title: string
   price: number
-  quantity: number
+  description: string
+  discountPercentage: number
+  category: string
+  images: string[]
+  thumbnail: string
+  stock: number
+  rating: {
+    rate: number
+    count: number
+  }
 }
 
 const selectedProductData = ref<Product | {}>({})

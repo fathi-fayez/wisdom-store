@@ -5,10 +5,12 @@ interface Product {
   id: number
   title: string
   price: number
-  quantity?: number
   description: string
+  discountPercentage: number
   category: string
-  image: string
+  images: string[]
+  thumbnail: string
+  stock: number
   rating: {
     rate: number
     count: number

@@ -24,7 +24,7 @@ import { ref, provide, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
-const isDrawerOpen = ref(false)
+const isDrawerOpen = ref<boolean>(false)
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
@@ -39,7 +39,7 @@ provide('isMenuOpen', isMenuOpen)
 provide('toggleDrawer', toggleDrawer)
 provide('toggleMenu', toggleMenu)
 
-const windowWidth = ref(0)
+const windowWidth = ref<number>(0)
 
 onMounted(() => {
   windowWidth.value = window.innerWidth

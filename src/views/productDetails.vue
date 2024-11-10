@@ -2,7 +2,15 @@
   <section class="mt-16">
     <h1 class="ms-4 mb-5 font-weight-bold">Product Details</h1>
     <v-container>
-      <v-row>
+      <v-row v-if="!singleProduct" class="mt-5">
+        <v-col cols="6">
+          <v-skeleton-loader type="card"></v-skeleton-loader>
+        </v-col>
+        <v-col cols="6">
+          <v-skeleton-loader type="article, button"></v-skeleton-loader>
+        </v-col>
+      </v-row>
+      <v-row v-if="singleProduct">
         <v-col cols="12" md="7">
           <img :src="tab ? tab : singleProduct.thumbnail" class="w-100" alt="" height="500" />
           <v-tabs center-active height="220" v-model="tab" class="mt-10">
@@ -84,10 +92,12 @@ interface Product {
   id: number
   title: string
   price: number
-  quantity?: number
   description: string
+  discountPercentage: number
   category: string
-  image: string
+  images: string[]
+  thumbnail: string
+  stock: number
   rating: {
     rate: number
     count: number

@@ -28,8 +28,8 @@
                 ">Quick View</v-btn>
             </div>
             <v-card-text class="pl-0 font-weight-bold">
-              {{ `(${item.title}) ${item.description}`.length <= 80 ? `(${item.title}) ${item.description}` :
-                `(${item.title}) ${item.description}`.substring(0, 80) + "..." }} </v-card-text>
+              {{ `(${item.title}) ${item.description}`.length <= 70 ? `(${item.title}) ${item.description}` :
+                `(${item.title}) ${item.description}`.substring(0, 70) + "..." }} </v-card-text>
                 <v-rating v-model="item.rating" half-increments readonly color="yellow-darken-2" size="small"
                   density="compact">
                 </v-rating>
@@ -53,7 +53,7 @@
                       name: 'product_details',
                       params: { productId: item.id },
                     })
-                    " density class="py-3 px-9 w-75" style="
+                    " class="py-3 px-9 w-75" style="
                   text-transform: none;
                   border-radius: 30px;
                   display: block;
@@ -78,7 +78,7 @@ const getProductsByCategory = store.getProductsByCategory
 const route = useRoute()
 const productsCategory = ref(route.params.category)
 const showenItem = ref({})
-const loading = ref < Boolean > (false)
+const loading = ref(false)
 
 const openDialog = inject('openDialog')
 
