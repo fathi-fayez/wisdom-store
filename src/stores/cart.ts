@@ -8,6 +8,7 @@ interface Product {
   description: string
   discountPercentage: number
   category: string
+  quantity?: number
   images: string[]
   thumbnail: string
   stock: number
@@ -16,6 +17,7 @@ interface Product {
     count: number
   }
 }
+
 
 interface CartItem extends Product {}
 
