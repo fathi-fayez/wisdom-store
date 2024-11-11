@@ -1,6 +1,6 @@
 <template>
   <v-layout class="flex-column">
-    <cartDrawer />
+    <!-- <cartDrawer /> -->
     <MenuDrawer />
     <AppNav v-show="windowWidth > 990 && route.name != 'check_out'" />
     <FixedNav v-show="windowWidth > 990 && route.name != 'check_out'" />
@@ -55,5 +55,6 @@ onMounted(() => {
 }
 
 .low-margin {
-  margin-top: 65px !important;}
+  margin-top: 65px !important;
+}
 </style>

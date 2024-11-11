@@ -19,7 +19,10 @@ interface Product {
 }
 
 
-interface CartItem extends Product {}
+interface CartItem extends Product { }
+interface CartItem extends Product {
+  quantity: number // Makes quantity required in CartItem
+}
 
 // Define the shape of the state
 interface CartState {
