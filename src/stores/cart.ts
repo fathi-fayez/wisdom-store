@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 
 // Define interfaces for products and cart items
-interface Product {
+
+interface CartItem {
   id: number
   title: string
   price: number
@@ -12,17 +13,11 @@ interface Product {
   images: string[]
   thumbnail: string
   stock: number
-  rating: {
-    rate: number
-    count: number
-  }
+  rating: number
 }
 
 
-interface CartItem extends Product { }
-interface CartItem extends Product {
-  quantity: number // Makes quantity required in CartItem
-}
+
 
 // Define the shape of the state
 interface CartState {

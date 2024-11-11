@@ -33,7 +33,7 @@
               {{ singleProduct.description }}
             </v-card-text>
             <v-card-text class="px-0 pt-0" style="font-size: 14px">
-              Brand: {{ singleProduct.brand }}
+              Brand: undefine
             </v-card-text>
             <v-card-text class="px-0 pt-0" style="font-size: 14px">
               Availabilty: {{ singleProduct.availabilityStatus }}
@@ -99,10 +99,7 @@ interface Product {
   images: string[]
   thumbnail: string
   stock: number
-  rating: {
-    rate: number
-    count: number
-  }
+  rating: number
 }
 
 const route = useRoute()

@@ -1,6 +1,6 @@
 <template>
   <section class="mt-16">
-    <v-dialog v-model="dialog">
+    <v-dialog v-model="dialog" v-if="product">
       <div class="dialog-container position-relative">
         <v-icon style="
           position: absolute;
@@ -33,7 +33,7 @@
                   {{ product.description }}
                 </v-card-text>
                 <v-card-text class="px-0 pt-0" style="font-size: 14px">
-                  Brand: {{ product.brand }}
+                  Brand: undefine
                 </v-card-text>
                 <v-card-text class="px-0 pt-0" style="font-size: 14px">
                   Availabilty: {{ product.availabilityStatus }}
@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue'
-import { cartStore } from '@/stores/cart'
+import { cartStore } from '../stores/cart'
 
 interface Product {
   id: number
@@ -99,14 +99,11 @@ interface Product {
   description: string
   discountPercentage: number
   category: string
-  quantity?: number
+  quantity: number
   images: string[]
   thumbnail: string
   stock: number
-  rating: {
-    rate: number
-    count: number
-  }
+  rating: number
 }
 
 const store = cartStore()
@@ -122,8 +119,8 @@ const addItem = (item: Product) => {
     loading.value = false
   }, 1000)
 }
-const dialog = inject('isDialogOpen')
-const product = inject('selectedProductData')
+const dialog = inject<boolean>('isDialogOpen')
+const product = inject<Product>('selectedProductData')
 const quantity = ref<number>(1)
 const loading = ref<boolean>(false)
 </script>

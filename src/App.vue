@@ -35,10 +35,11 @@ interface Product {
   }
 }
 
-const selectedProductData = ref<Product | {}>({})
+const selectedProductData = ref<Product | null>(null)
+
 
 const isDialogOpen = ref<boolean>(false)
-const openDialog = (item: Product | {}) => {
+const openDialog = (item: Product): void => {
   isDialogOpen.value = true
   selectedProductData.value = item
 }

@@ -12,11 +12,9 @@ interface Product {
   quantity?: number
   images: string[]
   thumbnail: string
+  availabilityStatus: string
   stock: number
-  rating: {
-    rate: number
-    count: number
-  }
+  rating: number
 }
 
 interface Category {

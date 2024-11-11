@@ -25,7 +25,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const isDrawerOpen = ref<boolean>(false)
-const toggleDrawer = () => {
+const toggleDrawer = (): void => {
   isDrawerOpen.value = !isDrawerOpen.value
 }
 const isMenuOpen = ref<boolean>(false)

@@ -87,10 +87,7 @@ interface Product {
   images: string[]
   thumbnail: string
   stock: number
-  rating: {
-    rate: number
-    count: number
-  }
+  rating: number
 }
 
 // Define the type for each breakpoint
@@ -111,10 +108,10 @@ const breakPoints = ref<BreakPoints>({
   990: { slidesPerView: 4 },
 });
 
-const showenItem = ref({})
+const showenItem = ref<Record<string, string>>({})
 const props = defineProps({
   products: {
-    type: Array,
+    type: Array as () => Product[],
     required: true,
   },
   title: {
@@ -124,11 +121,20 @@ const props = defineProps({
     type: String,
   },
 })
+const toggleDrawer = inject<() => void>('toggleDrawer')
+const closeDrawer = (): void => {
+  if (toggleDrawer) {
+    toggleDrawer() // Call the function if it exists
+  }
+}
 
-const openDialog = inject('openDialog')
 
-const openQuickView = (item: Product) => {
-  openDialog(item)
+const openDialog = inject<(item: Product) => void>('openDialog')
+
+const openQuickView = (item: Product): void => {
+  if (openDialog) {
+    openDialog(item)
+  }
 }
 </script>
 

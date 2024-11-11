@@ -237,10 +237,12 @@ const selectedLang = ref<lang[]>([
   },
 ])
 
-const toggleDrawer = inject('toggleDrawer')
+const toggleDrawer = inject<() => void>('toggleDrawer')
 
-const closeDrawer = () => {
-  toggleDrawer()
+const closeDrawer = (): void => {
+  if (toggleDrawer) {
+    toggleDrawer()
+  }
 }
 </script>
 
