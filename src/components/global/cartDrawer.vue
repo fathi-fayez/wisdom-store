@@ -15,8 +15,8 @@
           <svg class="icon-shipping-truck" viewBox="0 0 40.55 24" width="30" fill="#F44336" :style="`position: absolute;
               bottom: 50%;
               z-index: 1;
-              left: calc(${parseInt((calcTotal / 10000) * 100) <= 100
-              ? parseInt((calcTotal / 10000) * 100)
+              left: calc(${(calcTotal / 10000) * 100 <= 100
+              ? (calcTotal / 10000) * 100
               : 100
             }% - 30px);
               transition: 0.15s all ease-in-out;
@@ -36,8 +36,8 @@
               </g>
             </g>
           </svg>
-          <v-progress-linear color="red" height="10" :model-value="parseInt((calcTotal / 10000) * 100) <= 100
-            ? parseInt((calcTotal / 10000) * 100)
+          <v-progress-linear color="red" height="10px" :model-value="(calcTotal / 10000) * 100 <= 100
+            ? (calcTotal / 10000) * 100
             : 100
             " striped>
           </v-progress-linear>
@@ -53,10 +53,10 @@
               text-transform: none;
               border-radius: 30px;
               border-color: rgb(199, 199, 199);
-            " class="w-100" variant="outlined" density="compact" height="45">Continue Shopping</v-btn>
+            " class="w-100" variant="outlined" density="compact" height="45px">Continue Shopping</v-btn>
         </v-card-actions>
       </v-card>
-      <v-card class="items-card pa-0" elevation="0" v-if="cartItems.length" max-height="250" style="overflow-y: auto">
+      <v-card class="items-card pa-0" elevation="0" v-if="cartItems.length" max-height="250px" style="overflow-y: auto">
         <v-container>
           <v-row v-for="item in cartItems" :key="item.id" class="align-center">
             <v-col cols="5">
@@ -103,13 +103,13 @@
               text-transform: none;
               border-radius: 30px;
               border-color: rgb(199, 199, 199);
-            " variant="elevated" density="compact" height="45" class="w-100" color="blue" elevation="0">Check
+            " variant="elevated" density="compact" height="45px" class="w-100" color="blue" elevation="0">Check
             Out</v-btn>
           <v-btn @click="route.push({ name: 'cart_Page' })" style="
               text-transform: none;
               border-radius: 30px;
               border-color: rgb(199, 199, 199);
-            " variant="outlined" density="compact" height="45" class="w-100">View Cart</v-btn>
+            " variant="outlined" density="compact" height="45px" class="w-100">View Cart</v-btn>
         </v-card-actions>
       </v-card>
     </v-navigation-drawer>
