@@ -128,16 +128,13 @@ const addItem = (item: Product) => {
 watch(
   () => route.params.productId,
   async newProductId => {
-    // loading.value = true
     await getSingleProduct(newProductId)
-    // loading.value = false
+
   },
 )
 
 onMounted(async () => {
-  // loading.value = true
   await getSingleProduct(productId.value)
-  // loading.value = false
 })
 </script>
 

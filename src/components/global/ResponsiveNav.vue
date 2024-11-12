@@ -41,14 +41,18 @@ import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 const shoppingCartStore = cartStore()
 const { cartItems } = storeToRefs(shoppingCartStore)
-const toggleMenu = inject('toggleMenu')
-const toggleDrawer = inject('toggleDrawer')
+const toggleMenu = inject<() => void>('toggleMenu')
+const toggleDrawer = inject<() => void>('toggleDrawer')
 
 const openMenu = () => {
-  toggleMenu()
+  if (toggleMenu) {
+    toggleMenu()
+  }
 }
 const openCart = () => {
-  toggleDrawer()
+  if (toggleDrawer) {
+    toggleDrawer()
+  }
 }
 </script>
 

@@ -69,6 +69,19 @@ import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Pagination } from 'swiper'
 
+interface Product {
+  id: number
+  title: string
+  price: number
+  description: string
+  discountPercentage: number
+  category: string
+  images: string[]
+  thumbnail: string
+  stock: number
+  rating: number
+}
+
 // Define the type for each breakpoint
 type Breakpoint = {
   slidesPerView: number;
@@ -79,10 +92,11 @@ type BreakPoints = {
   [key: number]: Breakpoint; // Index signature for dynamic keys
 };
 
-const showenItem = ref({})
+const showenItem = ref<Record<string, string>>({})
 const props = defineProps({
   products: {
-    type: Array,
+    type: Array as () => Product[],
+
     required: true,
   },
 })

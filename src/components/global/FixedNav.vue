@@ -45,9 +45,11 @@ import { inject } from 'vue'
 import { productsModule } from '@/stores/products'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
-const toggleDrawer = inject('toggleDrawer')
+const toggleDrawer = inject<() => void>('toggleDrawer')
 const closeDrawer = () => {
-  toggleDrawer()
+  if (toggleDrawer) {
+    toggleDrawer()
+  }
 }
 const productsStore = productsModule()
 const shoppingCartStore = cartStore()

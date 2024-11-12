@@ -77,7 +77,7 @@ export const productsModule = defineStore('productsModule', {
       }
     },
 
-    async getSingleProduct(productId: number) {
+    async getSingleProduct(productId: any) {
       try {
         const res = await axios.get(
           `https://dummyjson.com/products/${productId}`,
