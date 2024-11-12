@@ -9,7 +9,6 @@ interface Product {
   description: string
   discountPercentage: number
   category: string
-  quantity?: number
   images: string[]
   thumbnail: string
   availabilityStatus: string
