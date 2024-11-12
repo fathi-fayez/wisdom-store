@@ -64,7 +64,8 @@
               <v-icon size="22" @click="quantity++">mdi-plus</v-icon>
             </div>
             <v-card-actions class="mt-7 w-100 px-0">
-              <v-btn @click="addItem(singleProduct)" :loading="loading" variant="outlined" style="
+              <v-btn @click="addItem({ ...singleProduct, quantity: quantity })" :loading="loading" variant="outlined"
+                style="
                   text-transform: none;
                   width: 75%;
                   border-radius: 30px;
@@ -88,7 +89,7 @@ import { productsModule } from '@/stores/products'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
 
-interface Product {
+interface CartProduct {
   id: number
   title: string
   price: number
@@ -115,14 +116,15 @@ const addToCart = shoppingCartStore.addProductToCart
 const productId = ref<string | undefined>(route.params.productId as string | undefined)
 
 
-const addItem = (item: Product) => {
-  item.quantity = quantity.value
-  addToCart(item)
-  openSnackbar()
-  loading.value = true
+
+const addItem = (item: CartProduct) => {
+  addToCart(item);
+  openSnackbar();
+  loading.value = true;
+
   setTimeout(() => {
-    loading.value = false
-  }, 1000)
+    loading.value = false;
+  }, 1000);
 }
 
 watch(
