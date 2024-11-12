@@ -36,6 +36,7 @@ export const cartStore = defineStore('cartStore', {
       let exists = false
       for (let i = 0; i < this.cartItems.length; i++) {
         if (this.cartItems[i].id === product.id) {
+
               this.cartItems[i].quantity = (this.cartItems[i].quantity || 0) + (product.quantity || 1)
           exists = true
           break

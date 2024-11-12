@@ -42,8 +42,8 @@
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { productsModule } from '@/stores/products'
-import { cartStore } from '@/stores/cart'
+import { productsModule } from '../../stores/products'
+import { cartStore } from '../../stores/cart'
 import { storeToRefs } from 'pinia'
 const toggleDrawer = inject<() => void>('toggleDrawer')
 const closeDrawer = () => {

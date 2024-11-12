@@ -223,7 +223,7 @@
   </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref, onMounted, computed } from 'vue'
 import { cartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
@@ -234,7 +234,7 @@ const getCartItems = store.getCartItems
 const deleteItem = store.deleteItem
 const setToLocalStorage = store.setToLocalStorage
 const { cartItems } = storeToRefs(store)
-const countries = ref<string[]>(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
+const countries = ref(["Egypt", "Palestine", "Lebanon", "Seria", "Jordan"])
 
 
 const calcTotal = computed(() => {

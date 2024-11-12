@@ -92,8 +92,8 @@ import { productsModule } from '@/stores/products'
 import { storeToRefs } from 'pinia'
 const productsStore = productsModule()
 const { categories } = storeToRefs(productsStore)
-const isMenuOpen = inject('isMenuOpen')
-const drawer = ref(isMenuOpen)
+const isMenuOpen = inject<boolean>('isMenuOpen')
+const drawer = ref<boolean | undefined>(isMenuOpen)
 </script>
 
 <style></style>

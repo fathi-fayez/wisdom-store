@@ -98,7 +98,7 @@
               <v-card-text class="flex-grow-0">
                 ${{
                   Math.ceil(
-                    item.price - item.price * (item.discountPercentage / 100) * item.quantity,
+                    item.price - item.price * (item.discountPercentage / 100) * (item.quantity || 1),
                   )
                 }}
               </v-card-text>
@@ -130,7 +130,7 @@ const calcTotal = computed(() => {
   cartItems.value.forEach(product => {
     const discountedPrice =
       product.price * (1 - product.discountPercentage / 100)
-    total += Math.ceil(discountedPrice * product.quantity)
+    total += Math.ceil(discountedPrice * (product.quantity || 1))
   })
   return total
 })
