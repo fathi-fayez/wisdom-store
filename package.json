@@ -16,9 +16,8 @@
     "@mdi/font": "^7.4.47",
     "axios": "^1.7.7",
     "pinia": "^2.2.4",
-    "swiper": "^8.4.7",
+    "swiper": "^11.1.14",
     "vue": "^3.5.12",
-    "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.4.5",
     "vuetify": "^3.7.2"
   },

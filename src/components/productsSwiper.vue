@@ -13,11 +13,11 @@
         </v-row>
       </v-col>
     </v-container>
-    <swiper :modules="[Pagination, Navigation, Autoplay]" :slides-per-view="4" :space-between="10"
+    <Swiper :modules="[Pagination, Navigation, Autoplay]" :slides-per-view="4" :space-between="10"
       :pagination="{ clickable: true }" navigation
       :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }" :breakpoints="breakPoints"
       class="pb-10">
-      <swiper-slide v-for="item in products" :key="item.id">
+      <SwiperSlide v-for="item in products" :key="item.id">
         <v-card elevation="0" class="pb-5" style="user-select: none">,
           <div class="image-container position-relative">
             <img :src="showenItem[item.title] ? showenItem[item.title] : item.thumbnail
@@ -67,15 +67,17 @@
               " variant="outlined">Choose Option</v-btn>
               </div>
         </v-card>
-      </swiper-slide>
-    </swiper>
+      </SwiperSlide>
+    </Swiper>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from 'vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { Pagination, Navigation, Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface Product {
   id: number

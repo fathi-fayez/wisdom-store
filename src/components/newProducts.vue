@@ -66,8 +66,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css/pagination';
 
 interface Product {
   id: number
