@@ -129,8 +129,8 @@ const deleteItem = store.deleteItem
 const setToLocalStorage = store.setToLocalStorage
 const { cartItems } = storeToRefs(store)
 
-const isDrawerOpen = inject('isDrawerOpen')
-const drawer = ref<any>(isDrawerOpen)
+const isDrawerOpen = inject<boolean>('isDrawerOpen')
+const drawer = ref(isDrawerOpen)
 
 const calcTotal = computed(() => {
   let total = 0

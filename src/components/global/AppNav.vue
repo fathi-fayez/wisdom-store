@@ -237,7 +237,7 @@ const selectedLang = ref<lang[]>([
   },
 ])
 
-const toggleDrawer = inject<() => void>('toggleDrawer')
+const toggleDrawer = inject<(() => void) | undefined>('toggleDrawer')
 
 const closeDrawer = (): void => {
   if (toggleDrawer) {
