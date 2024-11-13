@@ -65,7 +65,7 @@ export const productsModule = defineStore('productsModule', {
       }
     },
 
-    async getProductsByCategory(category: string) {
+    async getProductsByCategory(category: string | string[]) {
       try {
         const res = await axios.get(
           `https://dummyjson.com/products/category/${category}?limit=20`,

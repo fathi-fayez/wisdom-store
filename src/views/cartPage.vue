@@ -42,8 +42,8 @@
             <svg class="icon-shipping-truck" viewBox="0 0 40.55 24" width="30" fill="#F44336" :style="`position: absolute;
               bottom: 50%;
               z-index: 1;
-              left: calc(${parseInt((calcTotal / 10000) * 100) <= 100
-                ? parseInt((calcTotal / 10000) * 100)
+              left: calc(${(calcTotal / 10000) * 100 <= 100
+                ? (calcTotal / 10000) * 100
                 : 100
               }% - 30px);
               transition: 0.15s all ease-in-out;
@@ -64,8 +64,8 @@
                 </g>
               </g>
             </svg>
-            <v-progress-linear color="red" height="10" :model-value="parseInt((calcTotal / 10000) * 100) <= 100
-              ? parseInt((calcTotal / 10000) * 100)
+            <v-progress-linear color="red" height="10" :model-value="(calcTotal / 10000) * 100 <= 100
+              ? (calcTotal / 10000) * 100
               : 100
               " striped>
             </v-progress-linear>
@@ -223,9 +223,9 @@
   </section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, computed } from 'vue'
-import { cartStore } from '@/stores/cart'
+import { cartStore } from '../stores/cart'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 const route = useRouter()

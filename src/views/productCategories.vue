@@ -67,28 +67,47 @@
   </section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, watch, inject } from 'vue'
 import { useRoute } from 'vue-router'
 import { productsModule } from '@/stores/products'
 import { storeToRefs } from 'pinia'
+
+interface CategoryProduct {
+  id: number
+  title: string
+  price: number
+  description: string
+  discountPercentage: number
+  category: string
+  images: string[]
+  thumbnail: string
+  availabilityStatus: string
+  stock: number
+  rating: number
+}
+
+
 const store = productsModule()
 const { categorieProducts } = storeToRefs(store)
 const getProductsByCategory = store.getProductsByCategory
 const route = useRoute()
 const productsCategory = ref(route.params.category)
-const showenItem = ref({})
+const showenItem = ref<Record<string, string>>({})
 const loading = ref(false)
 
-const openDialog = inject('openDialog')
+const openDialog = inject<((item: CategoryProduct) => void) | undefined>('openDialog')
 
-const openQuickView = item => {
-  openDialog(item)
+const openQuickView = (item: CategoryProduct) => {
+  if (openDialog) {
+
+    openDialog(item)
+  }
 }
 
 watch(
   () => route.params.category,
-  async newCategory => {
+  async (newCategory) => {
     loading.value = true
     await getProductsByCategory(newCategory)
     loading.value = false
